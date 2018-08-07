@@ -3,6 +3,26 @@
  * @param {string} S
  * @return {number}
  */
-var numJewelsInStones = function(J, S) {
-
+const numJewelsInStones = function(J, S) {
+  const jewelsMap = J.split('').reduce(
+    (accu, jewelsType) => ({ ...accu, [jewelsType]: true }),
+    {},
+  );
+  const stones = S.split('');
+  return stones.reduce(
+    (jewelCount, stoneType) => (
+      jewelsMap[stoneType] ? jewelCount + 1 : jewelCount
+    ),
+    0,
+  );
 };
+
+
+
+// // Test Ground
+// console.log(
+//   numJewelsInStones(
+//     "aA",
+//     "aAAbbbb",
+//   )
+// );
