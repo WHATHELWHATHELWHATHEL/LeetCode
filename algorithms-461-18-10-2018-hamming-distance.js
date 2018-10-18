@@ -4,15 +4,16 @@
  * @return {number}
  */
 
-const createBitString = (x) => {
-  let operator  = x;
-  let string = '';
-  do {
-    const bit = operator % 2;
-    string = `${bit}${string}`;
-  } while (operator > 1);
-}
-
 const hammingDistance = (x, y) => {
-
+  let xIterator = x;
+  let yIterator = y;
+  let count = 0;
+  while (xIterator > 1 || yIterator > 1) {
+    if (xIterator % 2 !== yIterator % 2) {
+      count += 1;
+    }
+    xIterator = Math.floor(xIterator / 2);
+    yIterator = Math.floor(yIterator / 2);
+  }
+  return xIterator !== yIterator ? count + 1 : count;
 };
