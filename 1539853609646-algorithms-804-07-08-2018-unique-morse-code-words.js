@@ -6,7 +6,7 @@
 const charCodeOfA = 97;
 const MORSE_LIST = ['.-', '-...', '-.-.', '-..', '.', '..-.', '--.', '....', '..', '.---', '-.-', '.-..', '--', '-.', '---', '.--.', '--.-', '.-.', '...', '-', '..-', '...-', '.--', '-..-', '-.--', '--..'];
 
-const uniqueMorseRepresentations = (words) => {
+const uniqueMorseRepresentations = (words) => { // eslint-disable-line
   // get Map First
   const MORSE_MAP = MORSE_LIST
   .map(

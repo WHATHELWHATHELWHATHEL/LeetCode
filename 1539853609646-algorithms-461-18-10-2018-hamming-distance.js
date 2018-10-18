@@ -4,7 +4,7 @@
  * @return {number}
  */
 
-const hammingDistance = (x, y) => {
+const hammingDistance = (x, y) => { // eslint-disable-line
   let xIterator = x;
   let yIterator = y;
   let count = 0;

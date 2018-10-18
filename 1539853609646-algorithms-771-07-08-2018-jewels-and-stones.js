@@ -3,7 +3,7 @@
  * @param {string} S
  * @return {number}
  */
-const numJewelsInStones = function(J, S) {
+const numJewelsInStones = function(J, S) { // eslint-disable-line
   const jewelsMap = J.split('').reduce(
     (accu, jewelsType) => ({ ...accu, [jewelsType]: true }),
     {},
@@ -16,8 +16,6 @@ const numJewelsInStones = function(J, S) {
     0,
   );
 };
-
-
 
 // // Test Ground
 // console.log(
