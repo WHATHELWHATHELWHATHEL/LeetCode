@@ -4,14 +4,15 @@
  */
 
 const charCodeOfA = 97;
-const MORSE_LIST = [".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."];
+const MORSE_LIST = ['.-', '-...', '-.-.', '-..', '.', '..-.', '--.', '....', '..', '.---', '-.-', '.-..', '--', '-.', '---', '.--.', '--.-', '.-.', '...', '-', '..-', '...-', '.--', '-..-', '-.--', '--..'];
+
 const uniqueMorseRepresentations = (words) => {
   // get Map First
   const MORSE_MAP = MORSE_LIST
   .map(
     (morseCode, index) => ({
-        code: morseCode,
-        char: String.fromCharCode(charCodeOfA + index),
+      code: morseCode,
+      char: String.fromCharCode(charCodeOfA + index),
     })
   ).reduce(
     (map, { code, char }) => ({ ...map, [char]: code }),
@@ -19,7 +20,7 @@ const uniqueMorseRepresentations = (words) => {
   );
   // translate the words into morse code
   const wordsInMorseCode = words.map(
-    (word) => (
+    word => (
       word.split('')
       .map(char => MORSE_MAP[char])
       .join('')
