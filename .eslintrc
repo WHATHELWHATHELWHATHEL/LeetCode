@@ -1,0 +1,21 @@
+{
+  "extends": "eslint-config-rnx",
+  "globals": {
+    "__DEV__": false,
+    "fetch": false
+  },
+  "rules": {
+    "no-console": 0,
+    "no-plusplus": 0,
+    "max-len": [0, 150, 4],
+    "no-continue": 0,
+    "new-cap": 0,
+    "no-restricted-syntax": [2, "WithStatement"],
+    "no-shadow": 0,
+    "react/jsx-no-bind": 0,
+    "react/prop-types": "off",
+    "react/jsx-space-before-closing": 0,
+    "react/no-multi-comp": 0,
+    "no-case-declarations": 0
+  }
+}
