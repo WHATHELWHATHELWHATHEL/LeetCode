@@ -4,20 +4,18 @@
  */
 
 const fizzBuzz = (n) => { // eslint-disable-line
-  const list = [...Array(n).keys()];
-  return list.map((number) => {
-    const value = number + 1;
-    const divide3 = value % 3 === 0;
-    const divide5 = value % 5 === 0;
-    if (divide3 && divide5) {
-      return 'FizzBuzz';
+  const list = [...Array(n + 1).keys()].slice(1, n + 1).map(v => `${v}`);
+  for (let index3 = 2; index3 < list.length; index3 += 3) {
+    if (!isNaN(list[index3])) {
+      list[index3] = 'Fizz';
     }
-    if (divide3) {
-      return 'Fizz';
+  }
+  for (let index5 = 4; index5 < list.length; index5 += 5) {
+    if (!isNaN(list[index5])) {
+      list[index5] = 'Buzz';
+    } else {
+      list[index5] = 'FizzBuzz';
     }
-    if (divide5) {
-      return 'Buzz';
-    }
-    return `${value}`;
-  });
+  }
+  return list;
 };
