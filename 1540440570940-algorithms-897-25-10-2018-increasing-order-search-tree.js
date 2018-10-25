@@ -10,10 +10,10 @@
  * @return {TreeNode}
  */
 
-// function TreeNode(val) {
-//   this.val = val;
-//   this.left = this.right = null;
-// }
+function TreeNode(val) {
+  this.val = val;
+  this.left = this.right = null;
+}
 
 const preOrderSequence = (root, accu) => {
   if (root.left) {
