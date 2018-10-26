@@ -4,21 +4,24 @@
  */
 
 const isMonotonic = (array) => { // eslint-disable-line
-  const isMontonicIncrease = array.reduce(
-    ({ isMontonic, prevNumber }, number) => ({
-      isMontonic: isMontonic && prevNumber <= number,
-      prevNumber: number,
+  const { isMontonicIncrease, isMontonicDecrease } = array.reduce(
+    ({
+      isMontonicIncrease,
+      isMontonicDecrease,
+      prevIncreaseNumber,
+      prevDecreaseNumber,
+    }, number) => ({
+      isMontonicIncrease: isMontonicIncrease && number >= prevIncreaseNumber,
+      isMontonicDecrease: isMontonicDecrease && number <= prevDecreaseNumber,
+      prevIncreaseNumber: number,
+      prevDecreaseNumber: number,
     }),
-    { isMontonic: true, prevNumber: -1 * Infinity },
-  ).isMontonic;
-  const isMontonicDecrease = array.reduce(
-    ({ isMontonic, prevNumber }, number) => ({
-      isMontonic: isMontonic && prevNumber >= number,
-      prevNumber: number,
-    }),
-    { isMontonic: true, prevNumber: Infinity },
-  ).isMontonic;
-  console.log(isMontonicIncrease);
-  console.log(isMontonicDecrease);
+    {
+      isMontonicIncrease: true,
+      isMontonicDecrease: true,
+      prevIncreaseNumber: -1 * Infinity,
+      prevDecreaseNumber: Infinity,
+    },
+  );
   return isMontonicIncrease || isMontonicDecrease;
 };
