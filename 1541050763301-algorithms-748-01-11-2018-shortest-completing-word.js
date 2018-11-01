@@ -4,7 +4,7 @@
  * @return {string}
  */
 
-const getCharCount = (string, isReverse) => {
+const getCharCount = (string) => {
   const countObject = {};
   string.toLowerCase().split('')
   .filter(char => /[a-zA-Z]/.test(char))
@@ -12,32 +12,23 @@ const getCharCount = (string, isReverse) => {
     if (countObject[char] === undefined) {
       countObject[char] = 0;
     }
-    if (isReverse) {
-      countObject[char] += 1;
-    } else {
-      countObject[char] -= 1;
-    }
+    countObject[char] += 1;
   });
   return countObject;
 };
 
 const shortestCompletingWord = (licensePlate, words) => { // eslint-disable-line
   const licenseMap = getCharCount(licensePlate);
-  let result = {
-
-  };
+  let result = '';
   words.forEach((word) => {
     const wordsCountMap = getCharCount(word);
-    const matchCount = Object.keys(licenseMap).reduce(
-      (prevCount, key) => {
+    const isMatch = Object.keys(licenseMap).reduce(
+      (prevIsMatch, key) => {
         const licenseCount = licenseMap[key];
         const wordCount = wordsCountMap[key];
-        if (licenseCount === wordCount) {
-          return prevCount + wordCount;
-        }
-        return prevCount;
+        return prevIsMatch && (licenseCount <= wordCount);
       },
-      0,
+      true,
     );
     const isResultEmpty = result === '';
     const isShorter = word.length < result.length;
@@ -52,4 +43,12 @@ const shortestCompletingWord = (licensePlate, words) => { // eslint-disable-line
 // shortestCompletingWord(
 //   'Ah71752',
 //   ['suggest', 'letter', 'of', 'husband', 'easy', 'education', 'drug', 'prevent', 'writer', 'old'],
+// );
+// shortestCompletingWord(
+//   'GrC8950',
+//   ['measure', 'other', 'every', 'base', 'according', 'level', 'meeting', 'none', 'marriage', 'rest']
+// );
+// shortestCompletingWord(
+//   '1s3 PSt',
+//   ['step', 'steps', 'stripe', 'stepple'],
 // );
